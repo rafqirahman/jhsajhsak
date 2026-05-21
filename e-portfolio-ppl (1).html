@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Portfolio PPL Terbimbing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   PANDUAN EDIT:
+   Cari teks dalam [KURUNG KOTAK] dan ganti
+   dengan data aslimu. Simpan file lalu buka
+   di browser untuk melihat hasilnya.
+   ============================================= */
+
+:root {
+  --cream: #FBF8F3;
+  --warm-brown: #6B4E32;
+  --soft-gold: #C9A55A;
+  --sage: #6B8F71;
+  --deep-navy: #1E2D40;
+  --light-sage: #EAF0EB;
+  --muted: #7A7A7A;
+  --border: rgba(107,78,50,0.15);
+  --white: #fff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--cream);
+  color: #333;
+  line-height: 1.7;
+}
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--deep-navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 56px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  color: var(--soft-gold);
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+.navbar-links { display: flex; gap: 4px; }
+.navbar-links a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.navbar-links a:hover,
+.navbar-links a.active {
+  background: rgba(201,165,90,0.18);
+  color: var(--soft-gold);
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--deep-navy);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: 'Guru';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 160px;
+  font-style: italic;
+  color: rgba(201,165,90,0.055);
+  pointer-events: none;
+  white-space: nowrap;
+}
+.avatar {
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  border: 3px solid var(--soft-gold);
+  background: rgba(201,165,90,0.12);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.25rem;
+  position: relative; z-index: 1;
+  overflow: hidden;
+}
+/* Jika ingin pakai foto, hapus .avatar-initials dan uncomment img di HTML */
+.avatar-initials {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: var(--soft-gold);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 6px;
+  position: relative; z-index: 1;
+}
+.hero-subtitle {
+  font-size: 13px;
+  color: var(--soft-gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  position: relative; z-index: 1;
+}
+.hero-program {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  position: relative; z-index: 1;
+}
+.hero-tags {
+  display: flex; justify-content: center;
+  flex-wrap: wrap; gap: 8px;
+  margin-top: 1.5rem;
+  position: relative; z-index: 1;
+}
+.tag {
+  background: rgba(201,165,90,0.14);
+  border: 1px solid rgba(201,165,90,0.35);
+  color: var(--soft-gold);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  letter-spacing: 0.06em;
+}
+
+/* ── CONTAINER ── */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ── SECTION WRAPPER ── */
+.section {
+  padding: 3.5rem 0 2rem;
+  border-bottom: 1px solid var(--border);
+}
+.section:last-of-type { border-bottom: none; }
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+.section-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-style: italic;
+  color: rgba(201,165,90,0.3);
+  line-height: 1;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--deep-navy);
+}
+.section-desc {
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── CARDS ── */
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+}
+.card-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--soft-gold);
+  margin-bottom: 8px;
+}
+.card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  color: var(--deep-navy);
+  margin-bottom: 10px;
+}
+.card-body {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 640px) {
+  .two-col { grid-template-columns: 1fr; }
+}
+
+/* ── QUOTE ── */
+.quote-block {
+  background: var(--light-sage);
+  border-left: 4px solid var(--sage);
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--deep-navy);
+  line-height: 1.8;
+}
+.quote-block cite {
+  display: block;
+  font-style: normal;
+  font-size: 12px;
+  color: var(--sage);
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+
+/* ── MODEL GURU ── */
+.misi-banner {
+  background: var(--deep-navy);
+  border-radius: 14px;
+  padding: 2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.misi-banner-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--soft-gold);
+  margin-bottom: 8px;
+}
+.misi-banner-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.85);
+}
+.kompetensi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+@media (max-width: 640px) {
+  .kompetensi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.kompetensi-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+.kompetensi-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.kompetensi-name {
+  font-size: 12px;
+  color: var(--warm-brown);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.kompetensi-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── ARTEFAK ── */
+.siklus-filter {
+  display: flex; gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.filter-btn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  color: var(--muted);
+  transition: all 0.2s;
+}
+.filter-btn.active {
+  background: var(--deep-navy);
+  color: var(--soft-gold);
+  border-color: var(--deep-navy);
+}
+
+.artefak-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+@media (max-width: 640px) {
+  .artefak-grid { grid-template-columns: 1fr 1fr; }
+}
+.artefak-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.artefak-card:hover {
+  border-color: var(--soft-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(107,78,50,0.1);
+}
+.artefak-card.hidden { display: none; }
+
+.artefak-thumb {
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+}
+.bg-sage { background: #EAF0EB; }
+.bg-gold { background: #FEF3E2; }
+.bg-blue { background: #EEF2FB; }
+.bg-red  { background: #FCF0F0; }
+.bg-purple { background: #F3EEF8; }
+.bg-green  { background: #EDF9F4; }
+
+.artefak-info { padding: 12px; }
+.artefak-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  color: var(--deep-navy);
+  margin-bottom: 3px;
+}
+.artefak-meta {
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.artefak-tags { display: flex; gap: 4px; flex-wrap: wrap; }
+.atag {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  background: var(--light-sage);
+  color: var(--sage);
+}
+
+/* ── ANALISIS PANEL ── */
+.analisis-panel {
+  display: none;
+  background: var(--white);
+  border: 1px solid var(--soft-gold);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+.analisis-panel.show { display: block; }
+.analisis-panel-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: var(--deep-navy);
+  margin-bottom: 1rem;
+}
+.analisis-quadrant {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+@media (max-width: 640px) {
+  .analisis-quadrant { grid-template-columns: 1fr; }
+}
+.quad {
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.quad.konteks  { background: #EEF2FB; }
+.quad.tujuan   { background: var(--light-sage); }
+.quad.kelebih  { background: #EDF9F4; }
+.quad.kekurang { background: #FEF3E2; }
+.quad-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--warm-brown);
+  margin-bottom: 6px;
+}
+.teori-box {
+  background: #F8F5F0;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.65;
+}
+.teori-box strong { color: var(--warm-brown); }
+
+/* ── PENILAIAN ── */
+.table-wrap {
+  overflow-x: auto;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.table-wrap h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--deep-navy);
+  margin-bottom: 1rem;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+thead tr { background: var(--deep-navy); }
+thead th {
+  color: var(--soft-gold);
+  padding: 9px 12px;
+  text-align: left;
+  font-weight: 500;
+  font-family: 'Lora', serif;
+  white-space: nowrap;
+}
+tbody td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--border);
+  color: #444;
+}
+tbody tr:last-child td { border-bottom: none; }
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-a { background: #EDF9F4; color: #1A6B43; }
+.badge-b { background: #EEF2FB; color: #2A4AA0; }
+.badge-c { background: #FEF3E2; color: #8B4E0A; }
+
+/* ── REFLEKSI TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 9px; top: 0; bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+.timeline-dot {
+  position: absolute;
+  left: -34px; top: 5px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--soft-gold);
+  background: var(--cream);
+}
+.timeline-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--soft-gold);
+  margin-bottom: 8px;
+}
+.timeline-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+.timeline-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: var(--deep-navy);
+  margin-bottom: 8px;
+}
+.timeline-card p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.8;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep-navy);
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+}
+footer span { color: var(--soft-gold); }
+
+/* ── PRINT ── */
+@media print {
+  .navbar { position: static; }
+  .analisis-panel { display: block !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+  NAVBAR
+  ============================================= -->
+<nav class="navbar">
+  <a href="#hero" class="navbar-brand">E-Portfolio PPL Terbimbing</a>
+  <div class="navbar-links">
+    <a href="#profil">Profil</a>
+    <a href="#artefak">Artefak</a>
+    <a href="#penilaian">Penilaian</a>
+    <a href="#refleksi">Refleksi</a>
+  </div>
+</nav>
+
+
+<!-- =============================================
+  HERO — GANTI DATA DI BAWAH INI
+  ============================================= -->
+<section class="hero" id="hero">
+  <div class="avatar">
+    <!-- OPSI 1: Pakai inisial (default) -->
+    <span class="avatar-initials">MR</span>
+    <!-- OPSI 2: Pakai foto — hapus baris avatar-initials di atas, uncomment baris berikut:
+    <img src="foto-saya.jpg" alt="Foto profil" style="width:100%;height:100%;object-fit:cover;">
+    -->
+  </div>
+  <h1>M. Rafqi Rahman</h1>
+  <p class="hero-subtitle">Calon Guru Profesional</p>
+  <p class="hero-program">
+    Pendidikan Profesi Guru · Universitas Sarjanawiyata Tamansiswa · Tahun Akademik 2026
+  </p>
+  <div class="hero-tags">
+    <span class="tag">PPL Terbimbing</span>
+    <span class="tag">Siklus 1–3</span>
+    <span class="tag">Matematika & IPAS </span>
+    <span class="tag">SDN Panembahan</span>
+    <span class="tag">Yogyakarta</span>
+  </div>
+</section>
+
+
+<div class="container">
+
+<!-- =============================================
+  BAGIAN 1 — PROFIL MAHASISWA
+  ============================================= -->
+<section class="section" id="profil">
+  <div class="section-heading">
+    <span class="section-num">01</span>
+    <div>
+      <div class="section-title">Profil Mahasiswa</div>
+      <div class="section-desc">Asal daerah, inspirasi, dan tujuan menjadi guru profesional</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-label">Asal Daerah</div>
+      <div class="card-title"> Kabupaten Pasaman Barat, Provinsi Sumatera  Barat </div>
+      <div class="card-body">
+        <!-- EDIT: Ceritakan keunikan daerah asalmu -->
+        Tuliskan 2–3 kalimat tentang keunikan daerah asalmu — bisa tentang budaya, kuliner khas, tradisi, atau hal yang membuatmu bangga berasal dari sana. Ini menjadi pembuka yang personal dan autentik.
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Inspirasi Menjadi Guru</div>
+      <div class="card-title">Siapa atau Apa yang Menginspirasimu?</div>
+      <div class="card-body">
+        <!-- EDIT: Ceritakan siapa/apa yang menginspirasimu -->
+        Tuliskan tokoh, momen, atau pengalaman yang mendorongmu memilih profesi guru. Bisa sosok guru yang berkesan, pengalaman mengajar adik, atau nilai keluarga yang ditanamkan sejak kecil.
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Narasi Profil</div>
+    <div class="card-title">Tentang Saya</div>
+    <div class="card-body">
+      <!-- EDIT: Isi narasi lengkap di sini -->
+      <p>Saya, <strong>M. Rafqi Rahman </strong>, M. Rafqi Rahman, berasal dari Kabupaten Pasaman Barat, Provinsi Sumatera Barat — sebuah daerah yang memiliki keunikan berupa keberagaman budaya, masyarakat yang menjunjung tinggi gotong royong, serta kekayaan alam yang indah. Tumbuh di lingkungan yang sederhana dan penuh nilai kebersamaan, saya mengenal dunia pendidikan sejak kecil melalui pengalaman belajar bersama guru-guru yang sabar dan peduli terhadap siswanya.
+
+Keputusan untuk menjadi guru lahir dari pengalaman melihat bagaimana seorang guru mampu memberikan semangat, motivasi, dan mengubah cara berpikir siswa menjadi lebih baik. Saya percaya bahwa pendidikan bukan hanya tentang menyampaikan ilmu pengetahuan, tetapi juga membentuk karakter, sikap, dan masa depan peserta didik. Melalui PPL Terbimbing ini, saya berkomitmen untuk meningkatkan kemampuan mengajar, memahami kebutuhan siswa, serta menciptakan pembelajaran yang aktif dan menyenangkan.
+
+Tujuan saya adalah menjadi guru yang sabar, inspiratif, dan kreatif — seorang pendidik yang tidak hanya mentransfer ilmu, tetapi juga mampu menanamkan nilai karakter, membangun rasa percaya diri, dan membantu siswa mengembangkan potensi terbaik dalam dirinya..</p>
+    </div>
+  </div>
+
+  <!-- EDIT: Ganti kutipan dan sumbernya -->
+  <blockquote class="quote-block">
+    "[Tuliskan kutipan atau kata mutiara yang memperkuat filosofi mengajarmu — dari tokoh pendidikan, pemikir, atau buah renunganmu sendiri]"
+    <cite>— [Nama sumber kutipan]</cite>
+  </blockquote>
+</section>
+
+
+<!-- =============================================
+  BAGIAN 2 — MODEL GURU
+  ============================================= -->
+<section class="section" id="model-guru">
+  <div class="section-heading">
+    <span class="section-num">02</span>
+    <div>
+      <div class="section-title">Model Guru yang Dituju</div>
+      <div class="section-desc">Misi, kompetensi, dan karakter guru profesional yang ingin dibangun</div>
+    </div>
+  </div>
+
+  <div class="misi-banner">
+    <div class="misi-banner-label">Misi sebagai Guru</div>
+    <div class="misi-banner-text">
+      <!-- EDIT: Tuliskan misimu sebagai guru -->
+      Saya berkomitmen untuk [misi utama sebagai guru]. Saya ingin menciptakan lingkungan belajar yang [karakteristik kelas impianmu], di mana setiap siswa merasa [perasaan yang ingin dihadirkan]. Dengan menguasai [pendekatan/metode yang ingin dikuasai], saya akan memberikan dampak [dampak yang ingin dicapai] bagi peserta didik dan komunitas sekolah.
+    </div>
+  </div>
+
+  <div class="kompetensi-grid">
+    <!-- EDIT: Deskripsikan tiap kompetensi sesuai perkembanganmu -->
+    <div class="kompetensi-item">
+      <div class="kompetensi-icon">🧠</div>
+      <div class="kompetensi-name">Kompetensi Pedagogik</div>
+      <div class="kompetensi-desc">[Strategi/pendekatan pedagogik yang ingin dikuasai]</div>
+    </div>
+    <div class="kompetensi-item">
+      <div class="kompetensi-icon">🌱</div>
+      <div class="kompetensi-name">Kompetensi Kepribadian</div>
+      <div class="kompetensi-desc">[Karakter personal yang ingin dikembangkan sebagai guru]</div>
+    </div>
+    <div class="kompetensi-item">
+      <div class="kompetensi-icon">🤝</div>
+      <div class="kompetensi-name">Kompetensi Sosial</div>
+      <div class="kompetensi-desc">[Relasi dengan siswa, orang tua, dan rekan guru]</div>
+    </div>
+    <div class="kompetensi-item">
+      <div class="kompetensi-icon">📚</div>
+      <div class="kompetensi-name">Kompetensi Profesional</div>
+      <div class="kompetensi-desc">[Penguasaan materi dan pengembangan profesional berkelanjutan]</div>
+    </div>
+    <div class="kompetensi-item">
+      <div class="kompetensi-icon">💡</div>
+      <div class="kompetensi-name">Inovasi Pembelajaran</div>
+      <div class="kompetensi-desc">[Pendekatan inovatif yang ingin dikembangkan]</div>
+    </div>
+    <div class="kompetensi-item">
+      <div class="kompetensi-icon">❤️</div>
+      <div class="kompetensi-name">Empati & Inklusivitas</div>
+      <div class="kompetensi-desc">[Komitmen terhadap keberagaman dan inklusivitas]</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =============================================
+  BAGIAN 3 — ARTEFAK PEMBELAJARAN
+  ============================================= -->
+<section class="section" id="artefak">
+  <div class="section-heading">
+    <span class="section-num">03</span>
+    <div>
+      <div class="section-title">Artefak Produk Pembelajaran</div>
+      <div class="section-desc">RPP, media, hasil kerja siswa, penilaian, video praktik mengajar</div>
+    </div>
+  </div>
+
+  <div class="siklus-filter">
+    <button class="filter-btn active" onclick="filterArtefak('semua', this)">Semua Artefak</button>
+    <button class="filter-btn" onclick="filterArtefak('siklus1', this)">Siklus 1</button>
+    <button class="filter-btn" onclick="filterArtefak('siklus2', this)">Siklus 2</button>
+    <button class="filter-btn" onclick="filterArtefak('siklus3', this)">Siklus 3</button>
+  </div>
+
+  <div class="artefak-grid">
+
+    <!-- ── ARTEFAK 1: RPP SIKLUS 1 ── -->
+    <div class="artefak-card" data-siklus="siklus1" onclick="showAnalisis('rpp1')">
+      <div class="artefak-thumb bg-sage">📄</div>
+      <div class="artefak-info">
+        <div class="artefak-name">RPP / Modul Ajar</div>
+        <!-- EDIT -->
+        <div class="artefak-meta">Siklus 1 · [Materi Pokok]</div>
+        <div class="artefak-tags">
+          <span class="atag">Perencanaan</span>
+          <span class="atag">Kurikulum</span>
+        </div>
+      </div>
+    </div>
+    <!-- Panel analisis RPP Siklus 1 -->
+    <div class="analisis-panel" id="analisis-rpp1" style="grid-column:1/-1;">
+      <div class="analisis-panel-title">📄 Analisis: RPP / Modul Ajar — Siklus 1</div>
+      <div class="analisis-quadrant">
+        <div class="quad konteks">
+          <div class="quad-label">Konteks</div>
+          <!-- EDIT --> Jelaskan konteks pembelajaran: kelas berapa, jumlah siswa, kondisi awal, dan latar belakang pemilihan materi ini untuk Siklus 1.
+        </div>
+        <div class="quad tujuan">
+          <div class="quad-label">Tujuan</div>
+          <!-- EDIT --> Jelaskan tujuan pembuatan RPP ini — kompetensi apa yang ingin dicapai siswa, dan bagaimana kaitannya dengan capaian pembelajaran.
+        </div>
+        <div class="quad kelebih">
+          <div class="quad-label">Kelebihan</div>
+          <!-- EDIT --> Jelaskan aspek yang berhasil baik dalam RPP ini. Dukung dengan teori (misal: prinsip konstruktivisme Vygotsky, diferensiasi pembelajaran, dll).
+        </div>
+        <div class="quad kekurang">
+          <div class="quad-label">Kekurangan & Tindak Lanjut</div>
+          <!-- EDIT --> Jelaskan aspek yang perlu diperbaiki dan rencana perbaikan untuk siklus berikutnya berdasarkan kajian teori.
+        </div>
+      </div>
+      <div class="teori-box">
+        <strong>Kajian Teori:</strong>
+        <!-- EDIT --> Hubungkan artefak ini dengan teori dari mata kuliah yang terintegrasi dengan PPL Terbimbing (misal: Strategi Pembelajaran, Pengembangan Kurikulum, Asesmen Autentik). Tunjukkan bagaimana teori mendukung atau menjelaskan pilihan yang kamu buat dalam RPP ini.
+      </div>
+    </div>
+
+    <!-- ── ARTEFAK 2: MEDIA SIKLUS 1 ── -->
+    <div class="artefak-card" data-siklus="siklus1" onclick="showAnalisis('media1')">
+      <div class="artefak-thumb bg-gold">🎬</div>
+      <div class="artefak-info">
+        <div class="artefak-name">Media Pembelajaran</div>
+        <!-- EDIT -->
+        <div class="artefak-meta">Siklus 1 · [Jenis Media]</div>
+        <div class="artefak-tags">
+          <span class="atag">Media</span>
+          <span class="atag">Teknologi</span>
+        </div>
+      </div>
+    </div>
+    <div class="analisis-panel" id="analisis-media1" style="grid-column:1/-1;">
+      <div class="analisis-panel-title">🎬 Analisis: Media Pembelajaran — Siklus 1</div>
+      <div class="analisis-quadrant">
+        <div class="quad konteks"><div class="quad-label">Konteks</div><!-- EDIT --> Jelaskan jenis media yang dibuat, alasan memilih media ini, dan kondisi sarana-prasarana sekolah.</div>
+        <div class="quad tujuan"><div class="quad-label">Tujuan</div><!-- EDIT --> Apa tujuan penggunaan media ini dalam pembelajaran? Bagaimana media mendukung capaian tujuan pembelajaran?</div>
+        <div class="quad kelebih"><div class="quad-label">Kelebihan</div><!-- EDIT --> Aspek media yang efektif meningkatkan keterlibatan atau pemahaman siswa, didukung teori.</div>
+        <div class="quad kekurang"><div class="quad-label">Kekurangan & Tindak Lanjut</div><!-- EDIT --> Keterbatasan media dan rencana perbaikan untuk siklus berikutnya.</div>
+      </div>
+      <div class="teori-box">
+        <strong>Kajian Teori:</strong>
+        <!-- EDIT --> Kaitkan dengan teori media pembelajaran (Dale's Cone of Experience, TPACK, dll) dari mata kuliah yang relevan.
+      </div>
+    </div>
+
+    <!-- ── ARTEFAK 3: HASIL KERJA SISWA SIKLUS 2 ── -->
+    <div class="artefak-card" data-siklus="siklus2" onclick="showAnalisis('hasil2')">
+      <div class="artefak-thumb bg-purple">📝</div>
+      <div class="artefak-info">
+        <div class="artefak-name">Hasil Kerja Siswa</div>
+        <!-- EDIT -->
+        <div class="artefak-meta">Siklus 2 · [Nama Tugas/Proyek]</div>
+        <div class="artefak-tags">
+          <span class="atag">Produk Siswa</span>
+          <span class="atag">Asesmen</span>
+        </div>
+      </div>
+    </div>
+    <div class="analisis-panel" id="analisis-hasil2" style="grid-column:1/-1;">
+      <div class="analisis-panel-title">📝 Analisis: Hasil Kerja Siswa — Siklus 2</div>
+      <div class="analisis-quadrant">
+        <div class="quad konteks"><div class="quad-label">Konteks</div><!-- EDIT --> Ceritakan tugas/proyek yang diberikan, bagaimana konteks penugasannya, dan sampel siswa yang dipilih sebagai contoh.</div>
+        <div class="quad tujuan"><div class="quad-label">Tujuan</div><!-- EDIT --> Apa yang ingin dibuktikan dari hasil kerja siswa ini? Hubungkan dengan tujuan pembelajaran.</div>
+        <div class="quad kelebih"><div class="quad-label">Kelebihan</div><!-- EDIT --> Apa yang menunjukkan keberhasilan pembelajaran dari hasil kerja siswa ini?</div>
+        <div class="quad kekurang"><div class="quad-label">Kekurangan & Tindak Lanjut</div><!-- EDIT --> Apa yang belum tercapai dan bagaimana tindak lanjutnya?</div>
+      </div>
+      <div class="teori-box">
+        <strong>Kajian Teori:</strong>
+        <!-- EDIT --> Hubungkan dengan teori asesmen autentik, taksonomi Bloom, atau pendekatan pembelajaran berbasis proyek dari mata kuliah yang relevan.
+      </div>
+    </div>
+
+    <!-- ── ARTEFAK 4: INSTRUMEN PENILAIAN SIKLUS 2 ── -->
+    <div class="artefak-card" data-siklus="siklus2" onclick="showAnalisis('instr2')">
+      <div class="artefak-thumb bg-blue">✅</div>
+      <div class="artefak-info">
+        <div class="artefak-name">Instrumen Penilaian</div>
+        <!-- EDIT -->
+        <div class="artefak-meta">Siklus 2 · Rubrik & Soal</div>
+        <div class="artefak-tags">
+          <span class="atag">Evaluasi</span>
+          <span class="atag">Rubrik</span>
+        </div>
+      </div>
+    </div>
+    <div class="analisis-panel" id="analisis-instr2" style="grid-column:1/-1;">
+      <div class="analisis-panel-title">✅ Analisis: Instrumen Penilaian — Siklus 2</div>
+      <div class="analisis-quadrant">
+        <div class="quad konteks"><div class="quad-label">Konteks</div><!-- EDIT --> Jelaskan jenis instrumen (rubrik/soal/observasi), sasaran kompetensi yang diukur, dan konteks penggunaannya.</div>
+        <div class="quad tujuan"><div class="quad-label">Tujuan</div><!-- EDIT --> Apa tujuan penilaian ini? Apakah formatif atau sumatif? Bagaimana hubungannya dengan tujuan pembelajaran?</div>
+        <div class="quad kelebih"><div class="quad-label">Kelebihan</div><!-- EDIT --> Aspek instrumen yang valid, reliabel, dan adil bagi semua siswa.</div>
+        <div class="quad kekurang"><div class="quad-label">Kekurangan & Tindak Lanjut</div><!-- EDIT --> Kelemahan instrumen dan rencana perbaikan.</div>
+      </div>
+      <div class="teori-box">
+        <strong>Kajian Teori:</strong>
+        <!-- EDIT --> Kaitkan dengan prinsip asesmen formatif, validitas konstruk, atau pendekatan asesmen for learning dari mata kuliah yang relevan.
+      </div>
+    </div>
+
+    <!-- ── ARTEFAK 5: VIDEO SIKLUS 3 ── -->
+    <div class="artefak-card" data-siklus="siklus3" onclick="showAnalisis('video3')">
+      <div class="artefak-thumb bg-red">🎥</div>
+      <div class="artefak-info">
+        <div class="artefak-name">Video Praktik Mengajar</div>
+        <!-- EDIT -->
+        <div class="artefak-meta">Siklus 3 · Rekaman Kelas</div>
+        <div class="artefak-tags">
+          <span class="atag">Praktik</span>
+          <span class="atag">Observasi</span>
+        </div>
+      </div>
+    </div>
+    <div class="analisis-panel" id="analisis-video3" style="grid-column:1/-1;">
+      <div class="analisis-panel-title">🎥 Analisis: Video Praktik Mengajar — Siklus 3</div>
+      <!-- EDIT: Ganti URL video YouTube/Drive di bawah -->
+      <div style="margin-bottom:1rem;">
+        <a href="[URL-VIDEO-YOUTUBE-ATAU-DRIVE]" target="_blank" style="display:inline-block; background:var(--deep-navy); color:var(--soft-gold); padding:8px 18px; border-radius:8px; text-decoration:none; font-size:13px;">▶ Tonton Video Praktik Mengajar</a>
+      </div>
+      <div class="analisis-quadrant">
+        <div class="quad konteks"><div class="quad-label">Konteks</div><!-- EDIT --> Jelaskan konteks rekaman: materi, kelas, metode yang ditampilkan, dan bagian mana dari pembelajaran yang direkam.</div>
+        <div class="quad tujuan"><div class="quad-label">Tujuan</div><!-- EDIT --> Apa yang ingin ditunjukkan melalui video ini tentang perkembangan praktik mengajarmu?</div>
+        <div class="quad kelebih"><div class="quad-label">Kelebihan</div><!-- EDIT --> Aspek mengajar yang terlihat meningkat dibanding siklus sebelumnya.</div>
+        <div class="quad kekurang"><div class="quad-label">Kekurangan & Tindak Lanjut</div><!-- EDIT --> Area yang masih perlu dikembangkan dan rencana ke depan.</div>
+      </div>
+      <div class="teori-box">
+        <strong>Kajian Teori:</strong>
+        <!-- EDIT --> Hubungkan dengan teori pengelolaan kelas, komunikasi pedagogis, atau reflective practice dari mata kuliah yang relevan.
+      </div>
+    </div>
+
+    <!-- ── ARTEFAK 6: REFLEKSI JURNAL SIKLUS 3 ── -->
+    <div class="artefak-card" data-siklus="siklus3" onclick="showAnalisis('jurnal3')">
+      <div class="artefak-thumb bg-green">📓</div>
+      <div class="artefak-info">
+        <div class="artefak-name">Catatan Refleksi</div>
+        <!-- EDIT -->
+        <div class="artefak-meta">Siklus 3 · Jurnal Mengajar</div>
+        <div class="artefak-tags">
+          <span class="atag">Refleksi</span>
+          <span class="atag">Pengembangan Diri</span>
+        </div>
+      </div>
+    </div>
+    <div class="analisis-panel" id="analisis-jurnal3" style="grid-column:1/-1;">
+      <div class="analisis-panel-title">📓 Analisis: Catatan Refleksi — Siklus 3</div>
+      <div class="analisis-quadrant">
+        <div class="quad konteks"><div class="quad-label">Konteks</div><!-- EDIT --> Kapan dan bagaimana jurnal ini dibuat? Apa yang mendorongmu untuk menulis refleksi ini?</div>
+        <div class="quad tujuan"><div class="quad-label">Tujuan</div><!-- EDIT --> Apa tujuan refleksi ini dalam perjalanan profesionalmu sebagai calon guru?</div>
+        <div class="quad kelebih"><div class="quad-label">Insight Utama</div><!-- EDIT --> Pembelajaran terbesar apa yang didapat dari refleksi ini?</div>
+        <div class="quad kekurang"><div class="quad-label">Rencana Pengembangan Diri</div><!-- EDIT --> Apa langkah konkret yang akan diambil berdasarkan refleksi ini?</div>
+      </div>
+      <div class="teori-box">
+        <strong>Kajian Teori:</strong>
+        <!-- EDIT --> Kaitkan dengan model reflektif (Gibbs Reflective Cycle, Kolb's Experiential Learning, dll) dari mata kuliah yang relevan.
+      </div>
+    </div>
+
+  </div><!-- end artefak-grid -->
+</section>
+
+
+<!-- =============================================
+  BAGIAN 4 — PENILAIAN (LAMPIRAN 7 & 8)
+  ============================================= -->
+<section class="section" id="penilaian">
+  <div class="section-heading">
+    <span class="section-num">04</span>
+    <div>
+      <div class="section-title">Penilaian dari Guru Pamong & DPL</div>
+      <div class="section-desc">Lampiran 7 (Perangkat Pembelajaran) & Lampiran 8 (Praktik Mengajar)</div>
+    </div>
+  </div>
+
+  <!-- LAMPIRAN 7 -->
+  <div class="table-wrap">
+    <h3>📋 Lampiran 7 — Instrumen Penilaian Penyusunan Perangkat Pembelajaran</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Komponen Penilaian</th>
+          <th>Siklus 1</th>
+          <th>Siklus 2</th>
+          <th>Siklus 3</th>
+          <th>Catatan Guru Pamong</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- EDIT: Ganti nilai dan catatan sesuai penilaian GP -->
+        <tr>
+          <td>Kelengkapan komponen perangkat</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP siklus 1-3]</td>
+        </tr>
+        <tr>
+          <td>Kesesuaian tujuan & capaian pembelajaran</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP siklus 1-3]</td>
+        </tr>
+        <tr>
+          <td>Kesesuaian asesmen dengan tujuan</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP siklus 1-3]</td>
+        </tr>
+        <tr>
+          <td>Diferensiasi & keberagaman siswa</td>
+          <td><span class="badge badge-c">C</span></td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP siklus 1-3]</td>
+        </tr>
+        <tr>
+          <td>Kreativitas & inovasi media</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP siklus 1-3]</td>
+        </tr>
+        <tr>
+          <td>Keterbacaan & sistematika penulisan</td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP siklus 1-3]</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LAMPIRAN 8 -->
+  <div class="table-wrap">
+    <h3>🏫 Lampiran 8 — Instrumen Penilaian Praktik Mengajar Mahasiswa</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Aspek Praktik Mengajar</th>
+          <th>Siklus 1</th>
+          <th>Siklus 2</th>
+          <th>Siklus 3</th>
+          <th>Catatan GP / DPL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- EDIT: Ganti nilai dan catatan sesuai penilaian GP/DPL -->
+        <tr>
+          <td>Pengelolaan & kondisi kelas</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP/DPL]</td>
+        </tr>
+        <tr>
+          <td>Komunikasi & keterlibatan siswa</td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP/DPL]</td>
+        </tr>
+        <tr>
+          <td>Penggunaan media & teknologi</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP/DPL]</td>
+        </tr>
+        <tr>
+          <td>Penguasaan materi pelajaran</td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP/DPL]</td>
+        </tr>
+        <tr>
+          <td>Pelaksanaan asesmen formatif</td>
+          <td><span class="badge badge-c">C</span></td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP/DPL]</td>
+        </tr>
+        <tr>
+          <td>Kemampuan refleksi & adaptasi</td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-b">B</span></td>
+          <td><span class="badge badge-a">A</span></td>
+          <td>[Catatan GP/DPL]</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+
+<!-- =============================================
+  BAGIAN 5 — REFLEKSI DIRI
+  ============================================= -->
+<section class="section" id="refleksi">
+  <div class="section-heading">
+    <span class="section-num">05</span>
+    <div>
+      <div class="section-title">Refleksi Diri</div>
+      <div class="section-desc">Perjalanan belajar sepanjang 3 siklus PPL Terbimbing</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Siklus 1 — Refleksi Awal</div>
+      <div class="timeline-card">
+        <h4>[Judul Refleksi Siklus 1, misal: "Pertama Kali Berdiri di Depan Kelas"]</h4>
+        <p>
+          <!-- EDIT --> Ceritakan pengalaman mengajar pertamamu dengan jujur: apa yang dirasakan sebelum, saat, dan setelah mengajar. Identifikasi apa yang berjalan baik dan apa yang mengejutkan atau membingungkan. Analisis <em>mengapa</em> hal tersebut terjadi dengan mengacu pada teori yang relevan. Akhiri dengan rencana perbaikan konkret untuk Siklus 2.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Siklus 2 — Refleksi Perkembangan</div>
+      <div class="timeline-card">
+        <h4>[Judul Refleksi Siklus 2, misal: "Belajar Membaca Dinamika Kelas"]</h4>
+        <p>
+          <!-- EDIT --> Tunjukkan pertumbuhan dari Siklus 1: apa yang sudah berhasil diperbaiki, bagaimana respons siswa berubah, dan tantangan baru apa yang muncul. Kaitkan pengalamanmu dengan kajian teori dari mata kuliah yang terintegrasi. Identifikasi secara spesifik area yang masih perlu dikembangkan sebelum Siklus 3.
+        </p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-label">Siklus 3 — Refleksi Akhir & Visi ke Depan</div>
+      <div class="timeline-card">
+        <h4>[Judul Refleksi Siklus 3, misal: "Menjadi Guru adalah Perjalanan Tanpa Henti"]</h4>
+        <p>
+          <!-- EDIT --> Rangkum transformasi terbesarmu sepanjang PPL Terbimbing — bagaimana pandanganmu tentang mengajar berubah dari Siklus 1 ke Siklus 3. Refleksikan momen paling bermakna yang membentuk identitas profesionalmu. Tutup dengan visi konkret: sebagai guru profesional, apa yang akan kamu lakukan berbeda, dan komitmen apa yang kamu bawa setelah PPL ini?
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- end container -->
+
+
+<!-- =============================================
+  FOOTER — EDIT NAMA & INFO
+  ============================================= -->
+<footer>
+  E-Portfolio PPL Terbimbing &nbsp;·&nbsp;
+  <span>[Nama Lengkap Mahasiswa]</span> &nbsp;·&nbsp;
+  [Program Studi] &nbsp;·&nbsp;
+  [Nama Universitas] &nbsp;·&nbsp;
+  [Tahun]
+</footer>
+
+
+<script>
+// ── FILTER ARTEFAK ──
+function filterArtefak(siklus, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.artefak-card').forEach(card => {
+    if (siklus === 'semua' || card.dataset.siklus === siklus) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+      // tutup panel analisisnya jika tersembunyi
+      const id = card.getAttribute('onclick').match(/'([^']+)'/)[1];
+      const panel = document.getElementById('analisis-' + id);
+      if (panel) panel.classList.remove('show');
+    }
+  });
+}
+
+// ── TOGGLE ANALISIS ──
+function showAnalisis(id) {
+  const panel = document.getElementById('analisis-' + id);
+  if (!panel) return;
+  const isOpen = panel.classList.contains('show');
+  // tutup semua panel
+  document.querySelectorAll('.analisis-panel').forEach(p => p.classList.remove('show'));
+  // buka yang diklik (toggle)
+  if (!isOpen) {
+    panel.classList.add('show');
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+}
+
+// ── ACTIVE NAVBAR ──
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.navbar-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>
